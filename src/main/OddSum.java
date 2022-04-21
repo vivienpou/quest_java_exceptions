@@ -17,7 +17,14 @@ public class OddSum {
             System.out.println();
         }
         for (int i = 0; i < args.length; i++) {
-            listInt.add(Integer.parseInt(args[i]));
+			if(!isNumeric(args[i])){
+				listInt.clear();
+				listInt.add(- 1);
+				break;
+			}
+        	if(isNumeric(args[i])){
+				listInt.add(Integer.parseInt(args[i]));
+			}
         }
 
         res = sum(listInt);
@@ -41,4 +48,16 @@ public class OddSum {
         }
         return result;
     }
+
+	public static boolean isNumeric(String strNum) {
+		if (strNum == null) {
+			return false;
+		}
+		try {
+			double d = Double.parseDouble(strNum);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
+	}
 }
